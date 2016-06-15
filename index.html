@@ -121,7 +121,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
       //Some WMS come with named styles.  The user can set to default.
       var styles = "default";
       //Establish the baseURL.  Several elements, including &EXCEPTIONS=INIMAGE and &Service are unique to openLayers addresses.
-      var url = baseURL + "Service=" + service + "&request=" + request + "&version=" + version + "&Styles=" + styles + "&format=" + format + "&CRS=" + crs + "&BBOX=" + bbox//"Layers=" + layers +  + "&EXCEPTIONS=INIMAGE" + "& +  +   + "&CRS=" + crs + "&BBOX=" + bbox + "&width=" + width + "&height=" + height;
+      var url = baseURL + "Service=" + service + "&request=" + request + "&version=" + version + "&Styles=" + styles + "&format=" + format + "&width=" + width + "&height=" + height + "&CRS=" + crs + "&BBOX=" + bbox//"Layers=" + layers +  + "&EXCEPTIONS=INIMAGE" + "& +  +   + "&CRS=" + crs + "&BBOX=" + bbox + "&width=" + width + "&height=" + height;
       return url;
   }
 
