@@ -7,6 +7,27 @@
   </head>
   <body>
     <div id="map" class="map"></div>
+    
+    &lt;script type="text/x-handlebars" id="components/layer-switcher"&gt;
+    &lt;ul&gt;&lt;h4&gt;{{group}}&lt;/h4&gt;
+    {{#each item in model}}
+      &lt;li&gt;
+        {{#if item.exclusive}}
+        &lt;label&gt;{{view Ember.RadioButton name=group
+            selectionBinding="selected" valueBinding="item.title"
+            checkedBinding="item.visible"}} {{item.title}}&lt;/label&gt;
+        {{else}}
+        {{view Ember.Checkbox checkedBinding="item.visible"}} {{item.title}}
+        &lt;button class="btn btn-default btn-xs" 
+          {{action "removeSelected" item}}&gt;
+          &lt;span class="glyphicon glyphicon-trash"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        {{/if}}
+      &lt;/li&gt;
+    {{/each}}
+    &lt;/ul&gt;
+&lt;/script&gt;
+    
     <script>
       var layers = [
         new ol.layer.Tile({
