@@ -105,7 +105,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
       //The user will enter the address to the public WMS layer here.  The data must be in WGS84
       var baseURL = "http://tiles.kartat.kapsi.fi/ortokuva?"//"http://demo.cubewerx.com/cubewerx/cubeserv.cgi?";
       var version = "1.3.0";
-      var request = "GetMap";
+      var request = "GetCapabilities";
       var format = "image%2Fjpeg"; //type of image returned  or image/jpeg
       //The layer ID.  Can be found when using the layers properties tool in ArcMap or from the WMS settings 
       var layers = "Foundation.GTOPO30";
@@ -121,8 +121,8 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
       //Some WMS come with named styles.  The user can set to default.
       var styles = "default";
       //Establish the baseURL.  Several elements, including &EXCEPTIONS=INIMAGE and &Service are unique to openLayers addresses.
-      var url = baseURL + "Layers=" + layers + "&version=" + version + "&EXCEPTIONS=INIMAGE" + "&Service=" + service + "&request=" + request + "&Styles=" + styles + "&format=" + format + "&CRS=" + crs + "&BBOX=" + bbox + "&width=" + width + "&height=" + height;
-      return "http://tiles.kartat.kapsi.fi/ortokuva?service=WMS&request=GetCapabilities&version=1.3.0&Styles=default&format=image%2Fjpeg&CRS=EPSG:4326&BBOX=60.930432202923335,25.3125,61.606396371386275,26.71875&width=256&height=256"//url;
+      var url = baseURL + "Service=" + service + "&request=" + request + "&version=" + version + "&Styles=" + styles + "&format=" + format + "&CRS=" + crs + "&BBOX=" + bbox//"Layers=" + layers +  + "&EXCEPTIONS=INIMAGE" + "& +  +   + "&CRS=" + crs + "&BBOX=" + bbox + "&width=" + width + "&height=" + height;
+      return url;
   }
 
   
