@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Pele</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #mapA {
-        height: 100%;
-      }
-    </style>
-  </head>
-  
-  <body>
-    <h3>Pele kuvat</h3>
-    
-    <div id="map"></div>
-    <script>
 
-/*
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 24.9375, lng: 60.1708},
-    zoom: 8
-  });
-}
-*/
-//setting up the dual maps
+<!--
+Website developed for use combining OpenLayers WMS layer with a google mash-up
+  
+Code is freely available for users and developers.  Make it better if you can!
+ 
+Benjamin Spaulding, Ph.D. www.gisdoctor.com
+ 
+--> 
+ 
+<html> 
+<head> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+<title>OpenLayers WMS in Google Maps V3</title> 
+<script src="http://maps.google.com/maps?file=api&amp;v=3&amp;key=ABQIAAAAZayeFes7LfpQuCEpjgcrnxQoDgDKWEm0nXgjAhQghs-QBZx6WxSMe_HIlvS_PrEM0Zl20DKHP6-Csg" type="text/javascript"></script> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+ 
+  
+<script type="text/javascript"> 
+    //setting up the dual maps
     var mapA;
     
    //setting up the variables for the different map type to appear in the dropdown above each map.  There needs to be a new var for each new wms layer
@@ -138,15 +125,26 @@ function initMap() {
       return url;
   }
 
+  
+ 
+</script> 
+ 
+</head> 
+<body style="margin:0px; padding:0px; font-family:Arial" onload="initialize()"> 
 
+<div style ="height:25px; width:100%; background-color:black; border-bottom-style:solid; border-color:Black;padding-left:15px; padding-top:10px;">
+    <a href="http://www.gisdoctor.com" style="text-decoration:none;"><b>
+        <span style="color:White">Return to GIS Doctor</span></b></a>
+</div>
 
-
-</script>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl_p_13lRrhIsR_mk4KoE-jNulaJKwAU4&signed_in=true&callback=initMap"
-        async defer>
-    </script>
-    <script src="http://maps.google.com/maps?file=api&amp;v=3&amp;key=ABQIAAAAZayeFes7LfpQuCEpjgcrnxQoDgDKWEm0nXgjAhQghs-QBZx6WxSMe_HIlvS_PrEM0Zl20DKHP6-Csg" type="text/javascript"></script> 
-
-  </body>
-</html>
+ <div style="width:1000px; padding-left:10px">
+<h2>OpenLayers WMS in Google Maps V3</h2> 
+ The following map displays a Google Map and a <a href="http://openlayers.org/">OpenLayers WMS</a>.  The user can toggle between the Google Map layer and OpenLayers WMS Layer.  The sample layer comes from <a href="http://cubewerx.com/">here</a> and can be found in a OpenLayers demo <a href="http://openlayers.org/dev/examples/">here</a>.
+ The code is written based on <a href="http://code.google.com/apis/maps/documentation/javascript/">Google Maps API V3</a>.  Feel free to use the code, just remember to provide a link to <a href="http://www.gisdoctor.com">GISDoctor.com</a>.
+ </div>
+ <br />
+<div id="mapA" style="position:absolute; left:10px; width:1000px; height:700px;"></div> 
+ 
+ 
+</body> 
+</html> 
