@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Website developed for use combining OpenLayers WMS layer with a google mash-up
-  
-Code is freely available for users and developers.  Make it better if you can!
- 
-Benjamin Spaulding, Ph.D. www.gisdoctor.com
- 
---> 
- 
+
 <html> 
 <head> 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/> 
@@ -19,12 +11,19 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
   
 <script type="text/javascript"> 
     //setting up the dual maps
-    var mapA;
+    //var mapA;
     
    //setting up the variables for the different map type to appear in the dropdown above each map.  There needs to be a new var for each new wms layer
 
     var kapsi//var openlayersWMS;
     
+          // Before we go looking for the passed parameters, set some defaults
+      // in case there are no patameters
+      var lat = 60.170833;
+      var lng = 24.9375;
+      var zoom = 17;
+      var maptype = google.maps.MapTypeId.SATELLITE;
+      var map = null; 
  
     function initialize() {
         //Set the center of the map
@@ -46,7 +45,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
             center: map_center
         }
  
-        mapA = new google.maps.Map(document.getElementById("mapA"), mapA_setup);
+        mapA = new google.maps.Map(document.getElementById("map"), mapA_setup);
       
         //Creating the WMS layer options.  This code creates the Google imagemaptype options for each wms layer.  In the options the function that calls the individual 
         //wms layer is set 
@@ -71,12 +70,12 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
       
         //Layers to appear on Map A.  The first string will give the map the map a name in the dropdown and the second object calls the map type
 
-        mapA.mapTypes.set('kapsi', kapsiWMS);
+        map.mapTypes.set('kapsi', kapsiWMS);
         
        
  
         //Controling the Layers that appear in Map A.  You can set certain maps to appear in Map A.
-        mapA.setOptions({
+        map.setOptions({
             mapTypeControlOptions: {
                 mapTypeIds: [
 		  'kapsi',
@@ -89,7 +88,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
  
     //Where the initial map type is set.  This can be adjusted as necessary.  The map name in ' ' indicates the default map viewed when the user 
     //visits the page
-    mapA.setMapTypeId('kapsi');
+    map.setMapTypeId('kapsi');
     
     
 }
