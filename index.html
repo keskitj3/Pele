@@ -23,7 +23,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
     
    //setting up the variables for the different map type to appear in the dropdown above each map.  There needs to be a new var for each new wms layer
 
-    var openlayersWMS;
+    var kapsi//var openlayersWMS;
     
  
     function initialize() {
@@ -52,12 +52,12 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
         //wms layer is set 
  
         var wmsOptions = {
-            alt: "OpenLayers",
+            alt: "kapsi",
             getTileUrl: WMSGetTileUrl,
             isPng: false,
             maxZoom: 30,
             minZoom: 1,
-            name: "OpenLayers",
+            name: "kapsi",
             tileSize: new google.maps.Size(256, 256)
 
         };
@@ -66,12 +66,12 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
  
         //Creating the object to create the ImageMapType that will call the WMS Layer Options.
 
-        openlayersWMS = new google.maps.ImageMapType(wmsOptions);
+        kapsiWMS = new google.maps.ImageMapType(wmsOptions);
         
       
         //Layers to appear on Map A.  The first string will give the map the map a name in the dropdown and the second object calls the map type
 
-        mapA.mapTypes.set('OpenLayers', openlayersWMS);
+        mapA.mapTypes.set('kapsi', kapsiWMS);
         
        
  
@@ -79,7 +79,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
         mapA.setOptions({
             mapTypeControlOptions: {
                 mapTypeIds: [
-		  'OpenLayers',
+		  'kapsi',
 		 
 		   google.maps.MapTypeId.SATELLITE
 		],
@@ -89,7 +89,7 @@ Benjamin Spaulding, Ph.D. www.gisdoctor.com
  
     //Where the initial map type is set.  This can be adjusted as necessary.  The map name in ' ' indicates the default map viewed when the user 
     //visits the page
-    mapA.setMapTypeId('OpenLayers');
+    mapA.setMapTypeId('kapsi');
     
     
 }
