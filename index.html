@@ -30,7 +30,7 @@
         var map_center = new google.maps.LatLng(60.170833, 24.9375);
 
         //Set the map properties
-        var mapA_setup = {
+        var map_setup = {
             zoom: 4,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             MapTypeControl: true,
@@ -45,7 +45,7 @@
             center: map_center
         }
  
-        mapA = new google.maps.Map(document.getElementById("map"), mapA_setup);
+        map = new google.maps.Map(document.getElementById("map"), map_setup);
       
         //Creating the WMS layer options.  This code creates the Google imagemaptype options for each wms layer.  In the options the function that calls the individual 
         //wms layer is set 
@@ -145,7 +145,7 @@
  </div>
  <br />
  -->
-<div id="mapA" style="position:absolute; left:10px; width:1000px; height:700px;"></div> 
+<div id="map" style="position:absolute; left:10px; width:1000px; height:700px;"></div> 
  
  
 </body> 
