@@ -26,9 +26,32 @@
       var map = null; 
  
     function initialize() {
+    	
         //Set the center of the map
-        var map_center = new google.maps.LatLng(60.170833, 24.9375);
+        //var map_center = new google.maps.LatLng(60.170833, 24.9375);
 
+      // ========== Read paramaters that have been passed in ==========
+      
+
+      // If there are any parameters at eh end of the URL, they will be in  location.search
+      // looking something like  "?lat=50&lng=-3&zoom=10&type=h"
+
+      // skip the first character, we are not interested in the "?"
+      var query = location.search.substring(1);
+
+      // split the rest at each "&" character to give a list of  "argname=value"  pairs
+      var pairs = query.split("&");
+      for (var i=0; i<pairs.length; i++) {
+        // break each pair at the first "=" to obtain the argname and value
+	var pos = pairs[i].indexOf("=");
+	var argname = pairs[i].substring(0,pos).toLowerCase();
+	var value = pairs[i].substring(pos+1).toLowerCase();
+        // alert("argname="+argname+" ,value="+value);
+        // process each possible argname
+        if (argname == "lat") {lat = parseFloat(value);}
+        if (argname == "lng") {lng = parseFloat(value);}
+      }
+      
         //Set the map properties
         var map_setup = {
             zoom: zoom,
