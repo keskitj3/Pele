@@ -32,7 +32,6 @@
       var query = location.search.substring(1);
 
       // Katkaistaa aina "&" kohdalla ja laitetaan kirjaimet listalle "argname=value"
-      split the rest at each "&" character to give a list of    pairs
       var pairs = query.split("&");
       for (var i=0; i<pairs.length; i++) {
         // Katkaistaan aina "=" kohdalta jolloin annetaan ensimmäiseksi osaksi "argname" ja toiseksi arvo
@@ -130,11 +129,8 @@
       //the size of the tile, must be 256x256
       var width = "256";
       var height = "256";
-      //Some WMS come with named styles.  The user can set to default.
       var styles = "default";
-      //Establish the baseURL.  Several elements, including &EXCEPTIONS=INIMAGE and &Service are unique to openLayers addresses.
       var url = baseURL + "Service=" + service + "&request=" + request + "&version=" + version + "&Styles=" + styles + "&format=" + format + "&width=" + width + "&height=" + height + "&CRS=" + crs + "&BBOX=" + bbox
-      //var url = "http://kansalaisen.karttapaikka.fi/image?request=GetMap&" + &BBOX=" + bbox + "scale=2000&width=1000&height=1000&srs=EPSG:3067&mode=orto"
       return url;
   }
 
