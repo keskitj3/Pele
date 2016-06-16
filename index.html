@@ -96,7 +96,7 @@
  //Complete path to OpenLayers WMS layer
  
   function WMSGetTileUrl(tile, zoom) {
-      var projection = window.mapA.getProjection();
+      var projection = window.map.getProjection();
       var zpow = Math.pow(2, zoom);
       var ul = new google.maps.Point(tile.x * 256.0 / zpow, (tile.y + 1) * 256.0 / zpow);
       var lr = new google.maps.Point((tile.x + 1) * 256.0 / zpow, (tile.y) * 256.0 / zpow);
