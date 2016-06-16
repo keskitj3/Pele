@@ -10,15 +10,10 @@
  
   
 <script type="text/javascript"> 
-    //setting up the dual maps
-    //var mapA;
-    
-   //setting up the variables for the different map type to appear in the dropdown above each map.  There needs to be a new var for each new wms layer
-
+    //luodaan muuttujat
     var kapsi//var openlayersWMS;
     
-          // Before we go looking for the passed parameters, set some defaults
-      // in case there are no patameters
+    //Jos muuttujia ei ole annettu osoiterivillä, käytetään näitä
       var lat = 60.170833;
       var lng = 24.9375;
       var zoom = 4;
@@ -27,32 +22,29 @@
  
     function initialize() {
     	
-        //Set the center of the map
-        //var map_center = new google.maps.LatLng(60.170833, 24.9375);
 
       // ========== Read paramaters that have been passed in ==========
       
+	//Luetaan osoiteriville annetut parametrit
+	//Etsitään parametrejä muodossa "?lat=50&lng=-3"
 
-      // If there are any parameters at eh end of the URL, they will be in  location.search
-      // looking something like  "?lat=50&lng=-3&zoom=10&type=h"
-
-      // skip the first character, we are not interested in the "?"
+      // Hypätään yli ensimmäisestä osoitteesta ja etsitään "?" jälkeen tulevat
       var query = location.search.substring(1);
 
-      // split the rest at each "&" character to give a list of  "argname=value"  pairs
+      // Katkaistaa aina "&" kohdalla ja laitetaan kirjaimet listalle "argname=value"
+      split the rest at each "&" character to give a list of    pairs
       var pairs = query.split("&");
       for (var i=0; i<pairs.length; i++) {
-        // break each pair at the first "=" to obtain the argname and value
+        // Katkaistaan aina "=" kohdalta jolloin annetaan ensimmäiseksi osaksi "argname" ja toiseksi arvo
 	var pos = pairs[i].indexOf("=");
 	var argname = pairs[i].substring(0,pos).toLowerCase();
 	var value = pairs[i].substring(pos+1).toLowerCase();
-        // alert("argname="+argname+" ,value="+value);
-        // process each possible argname
+        // etsitään listalta koordinaatteja
         if (argname == "lat") {lat = parseFloat(value);}
         if (argname == "lng") {lng = parseFloat(value);}
       }
       
-        //Set the map properties
+        // Asetetaan kartalle ominaisuudet
         var map_setup = {
             zoom: zoom,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -65,14 +57,12 @@
             maxZoom: 30,
             minZoom: 13,
             scaleControl: true,
-            center: new google.maps.LatLng(lat,lng),//map_center
+            center: new google.maps.LatLng(lat,lng)//map_center
         }
  
         map = new google.maps.Map(document.getElementById("map"), map_setup);
       
-        //Creating the WMS layer options.  This code creates the Google imagemaptype options for each wms layer.  In the options the function that calls the individual 
-        //wms layer is set 
- 
+ 	// Tehdään WMS-layerille ominaisuudet. Kutsuu WMSGetTileUrl osoitteen muodostamiseksi
         var wmsOptions = {
             alt: "kapsi",
             getTileUrl: WMSGetTileUrl,
@@ -86,18 +76,18 @@
 
         
  
-        //Creating the object to create the ImageMapType that will call the WMS Layer Options.
+        // Luodaan objektin tyypiksi ImageMapType ja ominaisuuksiksi wmsOptionsit
 
         kapsiWMS = new google.maps.ImageMapType(wmsOptions);
         
       
-        //Layers to appear on Map A.  The first string will give the map the map a name in the dropdown and the second object calls the map type
+        // Laitetaan layeri kartalle. Ensimmäinen "string" antaa layerille nimen tiputusvalikkoon ja toinen kutsuu sitä
 
         map.mapTypes.set('kapsi', kapsiWMS);
         
        
  
-        //Controling the Layers that appear in Map A.  You can set certain maps to appear in Map A.
+        // Asetukset kartalle vielä lisäksi. 
         map.setOptions({
             mapTypeControlOptions: {
                 mapTypeIds: [
@@ -109,14 +99,13 @@
             }
         });
  
-    //Where the initial map type is set.  This can be adjusted as necessary.  The map name in ' ' indicates the default map viewed when the user 
-    //visits the page
+    //Asetetaan ensimmäiseksi karttatyypiksi Kapsi
     map.setMapTypeId('kapsi');
     
     
 }
  
- //Complete path to OpenLayers WMS layer
+ //WMS layerin urlin hakeminen
  
   function WMSGetTileUrl(tile, zoom) {
       var projection = window.map.getProjection();
@@ -125,13 +114,13 @@
       var lr = new google.maps.Point((tile.x + 1) * 256.0 / zpow, (tile.y) * 256.0 / zpow);
       var ulw = projection.fromPointToLatLng(ul);
       var lrw = projection.fromPointToLatLng(lr);
-      //The user will enter the address to the public WMS layer here.  The data must be in WGS84
-      var baseURL = "http://tiles.kartat.kapsi.fi/ortokuva?"//"http://demo.cubewerx.com/cubewerx/cubeserv.cgi?";
+      //perus urlin hakeminen
+      var baseURL = "http://tiles.kartat.kapsi.fi/ortokuva?"
       var version = "1.3.0";
       var request = "GetMap";
       var format = "image%2Fjpeg"; //type of image returned  or image/jpeg
       //The layer ID.  Can be found when using the layers properties tool in ArcMap or from the WMS settings 
-      var layers = "Foundation.GTOPO30";
+      //var layers = "Foundation.GTOPO30";
       //projection to display. This is the projection of google map. Don't change unless you know what you are doing.  
       //Different from other WMS servers that the projection information is called by crs, instead of srs
       var crs = "EPSG:4326"; 
@@ -155,19 +144,6 @@
  
 </head> 
 <body style="margin:0px; padding:0px; font-family:Arial" onload="initialize()"> 
-<!--
-<div style ="height:25px; width:100%; background-color:black; border-bottom-style:solid; border-color:Black;padding-left:15px; padding-top:10px;">
-    <a href="http://www.gisdoctor.com" style="text-decoration:none;"><b>
-        <span style="color:White">Return to GIS Doctor</span></b></a>
-</div>
-
- <div style="width:1000px; padding-left:10px">
-<h2>OpenLayers WMS in Google Maps V3</h2> 
- The following map displays a Google Map and a <a href="http://openlayers.org/">OpenLayers WMS</a>.  The user can toggle between the Google Map layer and OpenLayers WMS Layer.  The sample layer comes from <a href="http://cubewerx.com/">here</a> and can be found in a OpenLayers demo <a href="http://openlayers.org/dev/examples/">here</a>.
- The code is written based on <a href="http://code.google.com/apis/maps/documentation/javascript/">Google Maps API V3</a>.  Feel free to use the code, just remember to provide a link to <a href="http://www.gisdoctor.com">GISDoctor.com</a>.
- </div>
- <br />
- -->
 <div id="map" style="position:absolute; left:10px; width:1000px; height:700px;"></div> 
  
  
