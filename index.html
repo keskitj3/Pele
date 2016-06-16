@@ -21,7 +21,7 @@
       // in case there are no patameters
       var lat = 60.170833;
       var lng = 24.9375;
-      var zoom = 17;
+      var zoom = 4;
       var maptype = google.maps.MapTypeId.SATELLITE;
       var map = null; 
  
@@ -31,7 +31,7 @@
 
         //Set the map properties
         var map_setup = {
-            zoom: 4,
+            zoom: zoom,
             mapTypeId: google.maps.MapTypeId.SATELLITE,
             MapTypeControl: true,
             mapTypeControlOptions: { style: google.maps.MapTypeControlStyle.DROPDOWN_MENU },
@@ -42,7 +42,7 @@
             maxZoom: 30,
             minZoom: 13,
             scaleControl: true,
-            center: map_center
+            center: new google.maps.LatLng(lat,lng),//map_center
         }
  
         map = new google.maps.Map(document.getElementById("map"), map_setup);
