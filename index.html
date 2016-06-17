@@ -101,7 +101,8 @@
     //Asetetaan ensimmäiseksi karttatyypiksi Kapsi
     map.setMapTypeId('kapsi');
     
-    
+    AddWMSLayer();
+
 }
  
  //WMS layerin urlin hakeminen
@@ -134,6 +135,24 @@
       return url;
   }
 
+    function AddWMSLayer()
+        {
+                 //Define custom WMS tiled layer
+                perusLayer = new google.maps.ImageMapType({
+                getTileUrl: peruslurl,               
+                //tileSize: new google.maps.Size(256, 256),
+                //opacity: 0.5, // setting image TRANSPARENCY 
+                isPng: true
+            });  
+    
+    
+    
+    
+    map.overlayMapTypes.push(perusLayer);
+    
+        }
+
+
  //WMS layerin urlin hakeminen vuoden 2014 peruslohkoille
  
   function peruslurl(tile, zoom) {
@@ -165,7 +184,12 @@
       return url;
   }
   
-  
+  function RemoveLayer() {
+            if(SDLLayer)
+            {          
+                map.overlayMapTypes.removeAt(0);           
+            }
+        }
   
  
 </script> 
