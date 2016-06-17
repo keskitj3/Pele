@@ -64,7 +64,7 @@
  	// Tehdään WMS-layerille ominaisuudet. Kutsuu WMSGetTileUrl osoitteen muodostamiseksi
         var wmsOptions = {
             alt: "kapsi",
-            getTileUrl: WMSGetTileUrl,
+            getTileUrl: peruslurl,
             isPng: false,
             maxZoom: 30,
             minZoom: 1,
@@ -136,7 +136,7 @@
 
  //WMS layerin urlin hakeminen vuoden 2014 peruslohkoille
  
-  function perusurl(tile, zoom) {
+  function peruslurl(tile, zoom) {
       var projection = window.map.getProjection();
       var zpow = Math.pow(2, zoom);
       var ul = new google.maps.Point(tile.x * 256.0 / zpow, (tile.y + 1) * 256.0 / zpow);
@@ -161,7 +161,7 @@
       var height = "256";
       var layers = "pl_2013"
       var styles = "default";
-      var url = baseURL + "Service=" + service + "&request=" + request + "&version=" + version + "&Styles=" + styles + "&format=" + format + "&width=" + width + "&height=" + height + "&LAYERS=" + layers + "&CRS=" + crs + "&BBOX=" + bbox
+      var url = baseURL + "Service=" + service + "&request=" + request + "&version=" + version + "&Styles=" + styles + "&format=" + format + "&width=" + width + "&height=" + height + "&TRANSPARENT=TRUE" + "&LAYERS=" + layers + "&CRS=" + crs + "&BBOX=" + bbox
       return url;
   }
   
