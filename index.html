@@ -64,7 +64,7 @@
  	// Tehdään WMS-layerille ominaisuudet. Kutsuu WMSGetTileUrl osoitteen muodostamiseksi
         var wmsOptions = {
             alt: "kapsi",
-            getTileUrl: WMSGetTileUrl("http://tiles.kartat.kapsi.fi/ortokuva?"),//WMSGetTileUrl,
+            getTileUrl: WMSGetTileUrl(tile, zoom, "http://tiles.kartat.kapsi.fi/ortokuva?"),//WMSGetTileUrl,
             isPng: false,
             maxZoom: 30,
             minZoom: 1,
