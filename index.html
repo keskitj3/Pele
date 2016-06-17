@@ -20,10 +20,7 @@
       var maptype = google.maps.MapTypeId.SATELLITE;
       var map = null; 
  
-    function initialize() {
-    	
-
-      // ========== Read paramaters that have been passed in ==========
+       // ========== Read paramaters that have been passed in ==========
       
 	//Luetaan osoiteriville annetut parametrit
 	//Etsitään parametrejä muodossa "?lat=50&lng=-3"
@@ -31,7 +28,7 @@
       // Hypätään yli ensimmäisestä osoitteesta ja etsitään "?" jälkeen tulevat
       var query = location.search.substring(1);
 
-      // Katkaistaa aina "&" kohdalla ja laitetaan kirjaimet listalle "argname=value"
+      // Katkaistaan aina "&" kohdalla ja laitetaan kirjaimet listalle "argname=value"
       var pairs = query.split("&");
       for (var i=0; i<pairs.length; i++) {
         // Katkaistaan aina "=" kohdalta jolloin annetaan ensimmäiseksi osaksi "argname" ja toiseksi arvo
@@ -42,6 +39,11 @@
         if (argname == "lat") {lat = parseFloat(value);}
         if (argname == "lng") {lng = parseFloat(value);}
       }
+ 
+    function initialize() {
+    	
+
+
       
         // Asetetaan kartalle ominaisuudet
         var map_setup = {
