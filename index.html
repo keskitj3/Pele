@@ -64,7 +64,7 @@
  	// Tehdään WMS-layerille ominaisuudet. Kutsuu WMSGetTileUrl osoitteen muodostamiseksi
         var wmsOptions = {
             alt: "kapsi",
-            getTileUrl: WMSGetTileUrl(tile, zoom, "http://tiles.kartat.kapsi.fi/ortokuva?"),//WMSGetTileUrl,
+            getTileUrl: WMSGetTileUrl,
             isPng: false,
             maxZoom: 30,
             minZoom: 1,
@@ -106,7 +106,7 @@
  
  //WMS layerin urlin hakeminen
  
-  function WMSGetTileUrl(tile, zoom, baseURL) {
+  function WMSGetTileUrl(tile, zoom) {
       var projection = window.map.getProjection();
       var zpow = Math.pow(2, zoom);
       var ul = new google.maps.Point(tile.x * 256.0 / zpow, (tile.y + 1) * 256.0 / zpow);
@@ -114,7 +114,7 @@
       var ulw = projection.fromPointToLatLng(ul);
       var lrw = projection.fromPointToLatLng(lr);
       //perus urlin hakeminen
-      var baseURL = baseURL//"http://tiles.kartat.kapsi.fi/ortokuva?"
+      var baseURL = "http://tiles.kartat.kapsi.fi/ortokuva?"
       var version = "1.3.0";
       var request = "GetMap";
       var format = "image%2Fjpeg"; //type of image returned  or image/jpeg
