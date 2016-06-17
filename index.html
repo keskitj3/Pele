@@ -152,12 +152,12 @@
     map.overlayMapTypes.push(perusLayer);
     */
             var peruslOptions = {
-            alt: "perusl",
+            alt: "perusLayer",
             getTileUrl: peruslurl,
             isPng: false,
             maxZoom: 30,
             minZoom: 1,
-            name: "perusl",
+            name: "perusLayer",
             //tileSize: new google.maps.Size(256, 256)
         };
  
@@ -171,7 +171,7 @@
     //visits the page
 
 
-    map.overlayMapTypes.insertAt(0, wmsMapType);
+    map.overlayMapTypes.insertAt(0, perusLayer);
 
 
     
