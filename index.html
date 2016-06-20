@@ -139,6 +139,7 @@
 
     function AddWMSLayer()
         {
+        if(NOT perusLayer) {
         	/*
                  //Define custom WMS tiled layer
                 perusLayer = new google.maps.ImageMapType({
@@ -178,7 +179,7 @@
 
     
     
-    
+        }
         }
 
 
